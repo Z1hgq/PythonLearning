@@ -6,14 +6,15 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import cross_val_score
 from sklearn import preprocessing
 
-#data = datasets.load_breast_cancer() #加载数据集
+data = datasets.load_wine() #加载数据集
+data_X = data.data
+data_y = data.target
 
-file_path = 'transfusion.data'
-tmp = np.loadtxt(file_path, dtype=np.str, delimiter=",")
-data_X = tmp[:,0:4].astype(np.float)#加载数据部分
-data_y = tmp[::,-1].astype(np.float)#加载类别标签部分
-# data_X = data.data
-# data_y = data.target
+# file_path = 'transfusion.data'
+# tmp = np.loadtxt(file_path, dtype=np.str, delimiter=",")
+# data_X = tmp[:,0:4].astype(np.float)#加载数据部分
+# data_y = tmp[::,-1].astype(np.float)#加载类别标签部分
+
 # print(data)
 #data normalization
 data_X = preprocessing.scale(data_X)
@@ -27,7 +28,7 @@ knn.fit(X_train,y_train)
 # #正确率
 # print(knn.score(X_test,y_test))
 #预测值
-print('transfusion:')
+print('数据集wine:')
 print('预测值:',knn.predict(X_test))
 #实际值
 print('实际值:',y_test)
