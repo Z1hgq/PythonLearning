@@ -23,8 +23,6 @@ bot.train("chatterbot.corpus.chinese.greetings")
 # 載入(簡體)中文的對話語言庫
 bot.train("chatterbot.corpus.chinese.conversations")
 
-
-
 @itchat.msg_register(itchat.content.TEXT)
 def text_reply(msg):
     return bot.get_response(msg.text)

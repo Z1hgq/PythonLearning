@@ -15,23 +15,26 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 bot = ChatBot('Terminal',
               storage_adapter='chatterbot.storage.MongoDatabaseAdapter',
               logic_adapters=[
-                  'chatterbot.logic.BestMatch'
+                  'chatterbot.logic.BestMatch',
+                  "chatterbot.logic.MathematicalEvaluation",
+                #   "chatterbot.logic.TimeLogicAdapter"
               ],
               filters=[
                   'chatterbot.filters.RepetitiveResponseFilter'
               ],
               input_adapter='chatterbot.input.TerminalAdapter',
               output_adapter='chatterbot.output.TerminalAdapter',
-              database='chatterbot-database'
+              database='chatterbot-xiaohuangji'
               )
 bot.set_trainer(ChatterBotCorpusTrainer)
-bot.train("chatterbot.corpus.english")
-# 載入(簡體)中文的基本語言庫
-bot.train("chatterbot.corpus.chinese")
-# 載入(簡體)中文的問候語言庫
-bot.train("chatterbot.corpus.chinese.greetings")
-# 載入(簡體)中文的對話語言庫
-bot.train("chatterbot.corpus.chinese.conversations")
+# bot.train('QingYun')
+# bot.train("chatterbot.corpus.english")
+# # 載入(簡體)中文的基本語言庫
+# bot.train("chatterbot.corpus.chinese")
+# # 載入(簡體)中文的問候語言庫
+# bot.train("chatterbot.corpus.chinese.greetings")
+# # 載入(簡體)中文的對話語言庫
+# bot.train("chatterbot.corpus.chinese.conversations")
 print('Type something to begin...')
 while True:
     try:
